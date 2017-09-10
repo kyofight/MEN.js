@@ -1,8 +1,10 @@
 export default {
   server: {
-    host: process.env.HOST || '0.0.0.0',
+    host: process.env.HOST || '127.0.0.1',
     port: process.env.PORT || 8080,
-
+    secure: {
+      ssl: false,
+    },
   },
   db: {
     uri: process.env.MONGODB_URI || 'mongodb://localhost/pet',

@@ -1,0 +1,34 @@
+version: '2'
+services:
+  api:
+    restart: always
+    build: .
+    container_name: pet-api
+    ports:
+     - "8080:8080"
+    environment:
+     - NODE_ENV=development
+    depends_on:
+     - db
+    volumes_from:
+     - web-data
+  web-data:
+    build: .
+    entrypoint: /bin/true
+    volumes:
+     - ./:/opt/pet
+     - /opt/pet/node_modules
+  db:
+    image: mongo:3.2.9
+    restart: always
+    ports:
+     - "27017:27017"
+    volumes_from:
+      - db-data
+  db-data:
+    image: mongo:3.2.9
+    volumes:
+      - /data/db
+      - /var/lib/mongodb
+      - /var/log/mongodb
+    entrypoint: /bin/true

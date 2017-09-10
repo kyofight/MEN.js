@@ -1,7 +1,42 @@
+// to be revised
 module.exports = {
   extends: [
     'airbnb/legacy'
   ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+
+  /**
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "binaryLiterals": true,
+    "blockBindings": true,
+    "classes": false,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": true,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "regexUFlag": true,
+    "regexYFlag": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true,
+    "unicodeCodePointEscapes": true,
+    "globalReturn": true,
+    "jsx": false
+  },
+   **/
+
   rules: {
     camelcase: 0,
     'comma-dangle': [2, 'never'],
@@ -53,26 +88,4 @@ module.exports = {
     'wrap-iife': [2, 'outside'],
     'vars-on-top': 0
   },
-  env: {
-    node: true,
-    es6: true,
-    browser: true,
-    jasmine: true,
-    mocha: true,
-    jquery: true
-  },
-  globals: {
-    angular: true,
-    by: true,
-    browser: true,
-    element: true,
-    inject: true,
-    io: true,
-    moment: true,
-    Modernizr: true,
-    Promise: true,
-    __TESTING__: true,
-    _: false,
-    ApplicationConfiguration: true
-  }
 };

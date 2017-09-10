@@ -1,20 +1,27 @@
 import mongoose from 'mongoose';
 import StatusConstants from '../constants/status.contants';
-import * as CustomerConstants from '../constants/customers.contants';
+import * as PetConstants from '../constants/pet.contants';
+import { PetAttributeSchema } from './pet-attribute.model';
 import _ from 'lodash';
 const Schema = mongoose.Schema;
 
-const CustomerSchema = new Schema({
-	username: {
+export const PetSchema = new Schema({
+	name: {
 		type: String,
 		required: true,
 		index: true,
 		trim: true,
 		unique: true,
 		validate: [(username) => {
-			return CustomerConstants.patterns.userName.test(username);
+			return PetConstants.PATTERNS.name.test(username);
 		}, 'username must start with a letter or number.'],
 	},
+	availableFrom: {
+		type: Date,
+		required: true,
+		default: Date.now,
+	},
+	attributes: PetAttributeSchema,
 	status: {
 		type: Number,
 		required: true,
@@ -35,6 +42,6 @@ const CustomerSchema = new Schema({
 	},
 });
 
-const Customer = mongoose.model('Customer', CustomerSchema);
+const Pet = mongoose.model('Pet', PetSchema);
 
-export default Customer;
+export default Pet;

@@ -17,6 +17,9 @@ Please follow the instruction on this page to setting up the API
 7. npm run apidoc
 8. npm run start
 
+# eslint
+npm run lint
+>Remark: you may see many errors as not all linting problems are fixed. This project is to demo to use this technique
 
 # Docker
 1. install docker
