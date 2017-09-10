@@ -1,5 +1,5 @@
 import express from 'express';
-import * as PetController from '../controllers/pets.controller';
+import PetController from '../controllers/pets.controller';
 
 
 export default function (app) {
@@ -21,7 +21,45 @@ export default function (app) {
    * @apiUse SuccessResponseDetail
    * @apiUse ErrorResponse
    */
-  router.get('/:id', PetController.getPetById());
+  router.get('/:id', PetController.getById());
+
+  /**
+   * @api {post} /pets Pet Create
+   * @apiVersion 1.0.0
+   * @apiPermission private
+   * @apiName Create Pet Profile
+   * @apiDescription Create Pet Profile
+   * @apiGroup Pet
+   *
+   * @apiParam {String} name username of the name
+   * @apiParam {Object} attribute of the pet ex. { age: Number, species: String, breed: String }
+   *
+   * @apiUse REQUEST_DATA_VALIDATION_REQUIRED_FIELD_MISSING
+   * @apiUse DATABASE_DATA_MODEL_FIELD_VALIDATION_ERROR
+   * @apiUse DATABASE_RECORD_NOT_CREATED
+   *
+   * @apiUse SuccessResponseDetail
+   * @apiUse ErrorResponse
+   */
+  router.post('/', PetController.create());
+
+  /**
+   * @api {get} /pets/:id/matches Pet List
+   * @apiVersion 1.0.0
+   * @apiPermission private
+   * @apiName View Pet List
+   * @apiDescription View Pet List
+   * @apiGroup Pet
+   *
+   * @apiParam {String} id Pet unique ID "_id"
+   *
+   * @apiUse REQUEST_DATA_VALIDATION_REQUIRED_FIELD_MISSING
+   * @apiUse DATABASE_RECORD_NOT_FOUND
+   *
+   * @apiUse SuccessResponseList
+   * @apiUse ErrorResponse
+   */
+  router.get('/:id/matches', PetController.getCustomerMatchesById());
 
   app.use('/pets', router);
 };

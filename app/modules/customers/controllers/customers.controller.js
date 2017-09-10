@@ -1,16 +1,47 @@
 import * as ResponseHelper from '../../core/helpers/response.helper';
 import * as RequestHelper from '../../core/helpers/request.helper';
+import CoreController from '../../core/controllers/core.controller';
 import mongoose from 'mongoose';
+import _ from 'lodash';
 const Customer = mongoose.model('Customer');
+const Pet = mongoose.model('Pet');
 
-export const getCustomerById = () => {
-	return (req, res, next) => {
-		const params = RequestHelper.getRequiredFieldsFromRequest(req, ['id'], 'params');
+export default new class CustomerController extends CoreController {
+	constructor() {
+		super(Customer);
+	}
 
-		Customer.findOne({ _id: params.id })
-			.then((result) => {
-				return ResponseHelper.createSucceedSingleRespond(res, ResponseHelper.checkEmptyAndGetResult(result, 'found'));
-			})
-			.catch(next);
+	/**
+	 * todo: filter out available from of the pets
+	 */
+	getPetMatchesById() {
+		const self = this;
+		return (req, res, next) => {
+			const params = RequestHelper.getRequiredFieldsFromRequest(req, ['id'], 'params');
+
+			self.model.findOne({ _id: params.id })
+				.then((result) => {
+					const customer = ResponseHelper.checkEmptyAndGetResult(result, 'found');
+					const condition = {};
+					if (!_.isEmpty(customer.preference.ageFrom)) {
+						condition['attributes.age'] = { $gte: customer.preference.ageFrom };
+					}
+					if (!_.isEmpty(customer.preference.ageTo)) {
+						condition['attributes.age'] = { $lte: customer.preference.ageTo };
+					}
+					if (!_.isEmpty(customer.preference.species)) {
+						condition['attributes.species'] = { $in: customer.preference.species };
+					}
+					if (!_.isEmpty(customer.preference.breed)) {
+						condition['attributes.breed'] = { $in: customer.preference.breed };
+					}
+
+					return Pet.find(condition);
+				})
+				.then((result) => {
+					return ResponseHelper.createSucceedDetailRespond(res, result);
+				})
+				.catch(next);
+		}
 	}
 }

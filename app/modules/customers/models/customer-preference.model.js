@@ -4,8 +4,24 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const CustomerPreferenceSchema = new Schema({
-	age: {
+	// todo: validate ageFrom < ageTo
+	ageFrom: {
 		type: Number,
+		min: [0, 'The ({PATH}) should not be less than ({VALUE}).'],
+		max: [100000, 'The ({PATH}) ({VALUE}) has reached the upper limit ({MAX}).'],
+		validate: {
+			validator: Number.isInteger,
+			message: '({VALUE}) is not an integer value'
+		}
+	},
+	ageTo: {
+		type: Number,
+		min: [0, 'The ({PATH}) should not be less than ({VALUE}).'],
+		max: [100000, 'The ({PATH}) ({VALUE}) has reached the upper limit ({MAX}).'],
+		validate: {
+			validator: Number.isInteger,
+			message: '({VALUE}) is not an integer value'
+		}
 	},
 	species: [{
 		type: String,

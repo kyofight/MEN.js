@@ -26,7 +26,7 @@ export const getError = (err) => {
 };
 
 
-export const createSucceedSingleRespond = (res, data, statusCode = 200) => {
+export const createSucceedDetailRespond = (res, data, statusCode = 200) => {
 	const result = {};
 	result.success = true;
 	result.data = data;
@@ -34,7 +34,7 @@ export const createSucceedSingleRespond = (res, data, statusCode = 200) => {
 };
 
 
-export const createSuccessListRespond = (res, list, page, pageSize, total, statusCode = 200) => {
+export const createSuccessPaginationRespond = (res, list, page, pageSize, total, statusCode = 200) => {
 	const result = {};
 	result.success = true;
 	result.pagination = {

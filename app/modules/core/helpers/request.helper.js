@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import RequestErrors from '../errors/request.errors';
-import ResponseHelper from './response.helper';
+import * as ResponseHelper from './response.helper';
 
 export const assignModelValues = (model, req, dataObj, type = 'body', options = {}) => {
 	const defaultExcludes = ['__v', 'updateDate', 'createDate', 'status'];
-	if (process.env.TEST_ENV !== 'yes') {
+	if (process.env.NODE_ENV !== 'test') {
 		defaultExcludes.push('_id');
 	}
 
@@ -54,7 +54,7 @@ export const getRequiredFieldsFromRequest = (req, requiredFields, type = 'body',
 	});
 
 	if (!isInvalid) {
-		if (process.env.TEST_ENV === 'yes' && req[type]._id) { // eslint-disable-line
+		if (process.env.NODE_ENV === 'test' && req[type]._id) { // eslint-disable-line
 			requiredFieldsData._id = req[type]._id; // eslint-disable-line
 		}
 		return requiredFieldsData;

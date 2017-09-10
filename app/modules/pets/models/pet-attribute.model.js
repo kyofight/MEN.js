@@ -6,6 +6,12 @@ const Schema = mongoose.Schema;
 export const PetAttributeSchema = new Schema({
 	age: {
 		type: Number,
+		min: [0, 'The ({PATH}) should not be less than ({VALUE}).'],
+		max: [100000, 'The ({PATH}) ({VALUE}) has reached the upper limit ({MAX}).'],
+		validate: {
+			validator: Number.isInteger,
+			message: '({VALUE}) is not an integer value'
+		}
 	},
 	species: {
 		type: String,
