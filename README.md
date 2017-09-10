@@ -11,10 +11,11 @@ Please follow the instruction on this page to setting up the API
 1. sudo
 2. npm i -g pm2
 3. npm i -g gulp
-4. npm i
-5. npm run test
-6. npm run apidoc
-7. npm run start
+4. npm i -g cross-env
+5. npm i
+6. npm run test
+7. npm run apidoc
+8. npm run start
 
 
 # Docker

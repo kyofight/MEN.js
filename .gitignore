@@ -52,5 +52,4 @@ node_modules
 /upload
 
 # config
-# /app/config/local.js
-# /app/config/apidoc/apidoc.js
+/app/config/local.js
