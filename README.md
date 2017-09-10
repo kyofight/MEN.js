@@ -1,19 +1,20 @@
-##### UNDER DEVELOPMENT #####
+# UNDER DEVELOPMENT
 
 Please follow the instruction on this page to setting up the API
 
 # Prerequisite
 1. node 8.2
 2. mongodb 3.2
+3. copy /app/config/local.example.js to /app/config/local.js, and modify the setting if needed 
 
 # Bootstrap
-sudo
-npm i -g pm2
-npm i -g gulp
-npm i
-npm run test
-npm run apidoc
-npm run start
+1. sudo
+2. npm i -g pm2
+3. npm i -g gulp
+4. npm i
+5. npm run test
+6. npm run apidoc
+7. npm run start
 
 
 # Docker

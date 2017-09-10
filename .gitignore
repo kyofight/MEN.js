@@ -43,9 +43,14 @@ node_modules
 
 # apidoc
 /apidoc
+/app/modules/apidoc.js
 
 # data folder
 /data
 
 # upload
 /upload
+
+# config
+# /app/config/local.js
+# /app/config/apidoc/apidoc.js
