@@ -1,7 +1,7 @@
 # MEN.js (v.1)
 By Kyo
 
-     M (Mongodb)   E (Express.js)    N (Node.js)
+     M (Mongodb)   E (Express.js)   N (Node.js)
   
 
 # Introduction
@@ -48,7 +48,7 @@ main application files<br ><br >
     - {**`test.js`**}
         yadda test entry point
     - {**`other root files`**}
-        - used eslint for code style checking, gulp for task automation
+        used eslint for code style checking, gulp for task automation
 
 # Prerequisite
 1. node 8.2
