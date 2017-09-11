@@ -1,5 +1,3 @@
-import * as ResponseHelper from '../../core/helpers/response.helper';
-import * as RequestHelper from '../../core/helpers/request.helper';
 import CoreController from '../../core/controllers/core.controller';
 import mongoose from 'mongoose';
 import _ from 'lodash';
@@ -17,11 +15,11 @@ export default new class CustomerController extends CoreController {
 	getPetMatchesById() {
 		const self = this;
 		return (req, res, next) => {
-			const params = RequestHelper.getRequiredFieldsFromRequest(req, ['id'], 'params');
+			const params = self.getRequiredFieldsFromRequest(req, ['id'], 'params');
 
 			self.model.findOne({ _id: params.id })
 				.then((result) => {
-					const customer = ResponseHelper.checkEmptyAndGetResult(result, 'found');
+					const customer = self.checkEmptyAndGetResult(result, 'found');
 					const condition = {};
 					if (!_.isEmpty(customer.preference.ageFrom)) {
 						condition['attributes.age'] = { $gte: customer.preference.ageFrom };
@@ -39,7 +37,7 @@ export default new class CustomerController extends CoreController {
 					return Pet.find(condition);
 				})
 				.then((result) => {
-					return ResponseHelper.createSucceedDetailRespond(res, result);
+					return self.createSucceedDetailRespond(res, result);
 				})
 				.catch(next);
 		}

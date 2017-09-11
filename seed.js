@@ -1,4 +1,4 @@
-import * as SeedHelper from './app/modules/core/helpers/seed.helper';
+import SeedHelper from './app/modules/core/helpers/seed.helper';
 import * as database from './app/bootstrap/mongoose';
 
 database.connect()

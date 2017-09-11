@@ -1,6 +1,10 @@
 # UNDER DEVELOPMENT
 
-Please follow the instruction on this page to setting up the API
+# Overview
+![folder structure](readme/folder-structure.png)
+
+
+
 
 # Prerequisite
 1. node 8.2

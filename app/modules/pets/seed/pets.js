@@ -1,5 +1,5 @@
 import Pet from '../models/pet.model';
-import * as SeedHelper from '../../core/helpers/seed.helper';
+import SeedHelper from '../../core/helpers/seed.helper';
 import moment from 'moment';
 
 export default function () {

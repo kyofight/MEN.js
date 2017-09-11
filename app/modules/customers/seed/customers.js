@@ -1,5 +1,5 @@
 import Customer from '../models/customer.model';
-import * as SeedHelper from '../../core/helpers/seed.helper';
+import SeedHelper from '../../core/helpers/seed.helper';
 
 export default function () {
   return SeedHelper.cleanAndCreate(Customer, 'Customer',
