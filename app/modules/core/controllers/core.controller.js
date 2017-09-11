@@ -58,7 +58,7 @@ export default class CoreController {
 		});
 
 		return dataObj;
-	};
+	}
 
 	getFieldsFromRequest(req, requiredFields, type = 'query') {
 		return _.reduce(requiredFields, (requiredFieldsData, field) => {
@@ -70,7 +70,7 @@ export default class CoreController {
 
 			return requiredFieldsData;
 		}, {});
-	};
+	}
 
 	getRequiredFieldsFromRequest(req, requiredFields, type = 'body', isTrim = true) {
 		const requiredFieldsData = {};
@@ -99,7 +99,7 @@ export default class CoreController {
 
 		error.message = `Missing required field "${missingField}" in "${type}"`;
 		throw this.getError({ error, status: 400 });
-	};
+	}
 
 	/**
 	 * common response functions
@@ -112,7 +112,7 @@ export default class CoreController {
 			});
 		}
 		return result;
-	};
+	}
 
 
 	getError(err) {
@@ -126,15 +126,14 @@ export default class CoreController {
 		error.message = err.message;
 		error.expected = err.expected;
 		return error;
-	};
+	}
 
 	createSucceedDetailRespond(res, data, statusCode = 200) {
 		const result = {};
 		result.success = true;
 		result.data = data;
 		res.status(statusCode).json(result);
-	};
-
+	}
 
 	createSuccessPaginationRespond(res, list, page, pageSize, total, statusCode = 200) {
 		const result = {};
@@ -147,5 +146,5 @@ export default class CoreController {
 		};
 		result.data = list;
 		res.status(statusCode).json(result);
-	};
+	}
 }
