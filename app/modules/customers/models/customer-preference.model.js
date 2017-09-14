@@ -27,11 +27,13 @@ export const CustomerPreferenceSchema = new Schema({
 		type: String,
 		trim: true,
 		enum: PetConstants.SPECIES,
+		// todo: validate no duplicate
 	}],
 	breed: [{
 		type: String,
 		trim: true,
 		enum: PetConstants.BREED,
+		// todo: validate no duplicate
 		validate: [function (breed) {
 			return (_.trim(breed) !== '' && _.indexOf(this.species, 'dog') !== -1) || (_.trim(breed) === '' && _.indexOf(this.species, 'dog') === -1);
 		}, 'only species dog should have breed type'],

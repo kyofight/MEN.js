@@ -6,9 +6,21 @@ export default function (app) {
   const router = express.Router();
 
   /**
+   * @api {get} /pets Pet List
+   * @apiVersion 1.0.0
+   * @apiName List Pet
+   * @apiDescription List Pet
+   * @apiGroup Pet
+   *
+   *
+   * @apiUse SuccessResponseDetail
+   * @apiUse ErrorResponse
+   */
+  router.get('', PetController.list());
+
+  /**
    * @api {get} /pets/:id Pet Profile
    * @apiVersion 1.0.0
-   * @apiPermission private
    * @apiName View Pet Profile
    * @apiDescription View Pet Profile
    * @apiGroup Pet
@@ -26,7 +38,6 @@ export default function (app) {
   /**
    * @api {post} /pets Pet Create
    * @apiVersion 1.0.0
-   * @apiPermission private
    * @apiName Create Pet Profile
    * @apiDescription Create Pet Profile
    * @apiGroup Pet
@@ -41,12 +52,11 @@ export default function (app) {
    * @apiUse SuccessResponseDetail
    * @apiUse ErrorResponse
    */
-  router.post('/', PetController.create());
+  router.post('', PetController.create());
 
   /**
    * @api {get} /pets/:id/matches Pet List
    * @apiVersion 1.0.0
-   * @apiPermission private
    * @apiName View Pet List
    * @apiDescription View Pet List
    * @apiGroup Pet

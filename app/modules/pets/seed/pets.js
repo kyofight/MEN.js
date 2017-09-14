@@ -11,7 +11,7 @@ export default function () {
         availableFrom: moment().add(-5, 'days'),
         attributes: {
           age: 10,
-          species: 'dog',
+          specie: 'dog',
           breed: 'terrier'
         },
       },
@@ -21,7 +21,7 @@ export default function () {
         availableFrom: moment().add(30, 'days'),
         attributes: {
           age: 5,
-          species: 'cat',
+          specie: 'cat',
         },
       },
     ]);

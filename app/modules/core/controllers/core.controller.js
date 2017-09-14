@@ -23,6 +23,17 @@ export default class CoreController {
 		}
 	}
 
+	list() {
+		const self = this;
+		return (req, res, next) => {
+			self.model.find({})
+				.then((result) => {
+					return self.createSucceedDetailRespond(res, result);
+				})
+				.catch(next);
+		}
+	}
+
 	create() {
 		const self = this;
 		return (req, res, next) => {

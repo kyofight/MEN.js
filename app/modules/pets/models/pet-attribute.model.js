@@ -13,7 +13,7 @@ export const PetAttributeSchema = new Schema({
 			message: '({VALUE}) is not an integer value'
 		}
 	},
-	species: {
+	specie: {
 		type: String,
 		trim: true,
 		enum: PetConstants.SPECIES,
@@ -23,8 +23,8 @@ export const PetAttributeSchema = new Schema({
 		trim: true,
 		enum: PetConstants.BREED,
 		validate: [function (breed) {
-			return (_.trim(breed) !== '' && this.species === 'dog') || (_.trim(breed) === '' && this.species !== 'dog');
-		}, 'only species dog should have breed type'],
+			return (_.trim(breed) !== '' && this.specie === 'dog') || (_.trim(breed) === '' && this.specie !== 'dog');
+		}, 'only specie dog should have breed type'],
 	},
 });
 

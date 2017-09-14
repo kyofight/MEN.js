@@ -5,10 +5,23 @@ import CustomerController from '../controllers/customers.controller';
 export default function (app) {
   const router = express.Router();
 
+
+  /**
+   * @api {get} /customers Customer List
+   * @apiVersion 1.0.0
+   * @apiName List Customer
+   * @apiDescription List Customer
+   * @apiGroup Customer
+   *
+   *
+   * @apiUse SuccessResponseDetail
+   * @apiUse ErrorResponse
+   */
+  router.get('', CustomerController.list());
+
   /**
    * @api {get} /customers/:id Customer Profile
    * @apiVersion 1.0.0
-   * @apiPermission private
    * @apiName View Customer Profile
    * @apiDescription View Customer Profile
    * @apiGroup Customer
@@ -26,7 +39,6 @@ export default function (app) {
   /**
    * @api {post} /customers Customer Create
    * @apiVersion 1.0.0
-   * @apiPermission private
    * @apiName Create Customer Profile
    * @apiDescription Create Customer Profile
    * @apiGroup Customer
@@ -41,12 +53,11 @@ export default function (app) {
    * @apiUse SuccessResponseDetail
    * @apiUse ErrorResponse
    */
-  router.post('/', CustomerController.create());
+  router.post('', CustomerController.create());
 
   /**
    * @api {get} /customers/:id/matches Customer List
    * @apiVersion 1.0.0
-   * @apiPermission private
    * @apiName View Customer List
    * @apiDescription View Customer List
    * @apiGroup Customer
